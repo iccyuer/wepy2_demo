@@ -1,0 +1,32 @@
+<template>
+    <div>index</div>
+</template>
+<script>
+import wepy from '@wepy/core';
+import eventHub from '../../common/eventHub';
+
+  wepy.page({
+      onLoad(obj) {
+          console.log('index-page-load', obj);
+          console.log('page', this);
+          eventHub.$on('appLaunched', () => {
+              console.log('page-appLaunched');
+          })
+      },
+      onShow(obj) {
+          console.log('index-page-show', obj);
+      },
+      onReady(obj) {
+          console.log('index-page-ready', obj);
+      },
+      onHide(obj) {
+          console.log('index-page-hide', obj);
+      },
+      onUnload(obj) {
+          console.log('index-page-unload', obj);
+      },
+      onAppLaunched(obj) {
+          console.log('index-page-applaunched', obj);
+      }
+  })
+</script>
