@@ -41,6 +41,7 @@ wepy.app({
     eventHub.$emit('appLaunched')
     // console.log('app', this);
     // console.log('wx', wx);
+    // wx.hideTabBar();
   },
 
   onShow(obj) {
@@ -125,5 +126,27 @@ wepy.app({
         }
       ]
     }
+    // "tabBar": {
+    //   "custom": true,
+    //   backgroundColor: "#ffffff",
+    //   borderStyle: "white",
+    //   selectedColor: "#fe786d",
+    //   color: "#000000",
+    //   "list": [
+    //     {
+    //       pagePath: "pages/user/index",
+    //       iconPath: "static/images/ico_home.png",
+    //       selectedIconPath: "static/images/ico_home_pressed.png",
+    //       text: "首页"
+    //     },
+    //     {
+    //       pagePath: "pages/user/categorylist",
+    //       iconPath: "static/images/ico_category.png",
+    //       selectedIconPath: "static/images/ico_category_pressed.png",
+    //       text: "分类"
+    //     }
+    //   ]
+    // },
+    // "usingComponents": {}
 }
 </config>

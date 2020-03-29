@@ -1,5 +1,5 @@
 
-
+import eventHub from '../common/eventHub';
 export default {
   data: {
     mixin: 'MixinText'
@@ -15,5 +15,14 @@ export default {
   },
   created () {
     console.log('created in mixin');
-  }
+  },
+  onLoad(obj) {
+    console.log('mixin-load', obj);
+    eventHub.$on('appLaunched', () => {
+        console.log('mixin-appLaunched');
+    })
+  },
+  onShow(obj) {
+    console.log('mixin--show', obj);
+  },
 }
