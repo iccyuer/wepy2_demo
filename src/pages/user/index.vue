@@ -2,6 +2,11 @@
     <div>
         <h2>index</h2>
         <!-- <image src="../../static/images/ico_home.png" /> -->
+        <template
+          v-for="(img, index) in images"
+        >
+          <image :key="index" :src="img" />
+        </template>
         <div>launched: {{launched}}</div>
         {{result.environment}}
         <button @click="handleClick">click me</button>
@@ -22,6 +27,7 @@ wepy.page({
   mixins: [baseMixin],
   data: {
     result: {},
+    images: ['http://localhost:3000/public/100.png'],
     launched: false
   },
   onLoad(obj) {
@@ -51,6 +57,7 @@ wepy.page({
   },
   methods: {
     async handleClick() {
+      this.images.push('http://localhost:3000/public/1001.png');
 			// let result = await wx.get('http://localhost:4009/api/be/rc/category/query_limits2')
 			// console.log('result', result);
       //   let result = wx.getSystemInfoSync();
