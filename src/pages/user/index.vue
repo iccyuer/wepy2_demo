@@ -2,57 +2,131 @@
     <div>
         <h2>index</h2>
         <!-- <image src="../../static/images/ico_home.png" /> -->
+        <div>launched: {{launched}}</div>
+        {{result.environment}}
         <button @click="handleClick">click me</button>
+        <button @click="login">login</button>
+        <button @click="getUserInfo">getUserInfo</button>
+        <button @click="getSetting">getSetting</button>
+        <button @click="openSetting">openSetting</button>
+        <button @click="authorize">authorize(userLocation)</button>
+        <button open-type="getUserInfo">authorize(userInfo)</button>
     </div>
 </template>
 <script>
 import wepy from '@wepy/core';
 import eventHub from '../../common/eventHub';
-import testMixin from '../../mixins/test.js'
+import baseMixin from '../../mixins/base.js';
 
-  wepy.page({
-      mixins: [testMixin],
-      onLoad(obj) {
-          console.log('index-page-load', obj);
-          console.log('page', this);
-          eventHub.$on('appLaunched', () => {
-              console.log('page-appLaunched');
-          })
-      },
-      onShow(obj) {
-          console.log('index-page-show', obj);
-      },
-      onReady(obj) {
-          console.log('index-page-ready', obj);
-      },
-      onHide(obj) {
-          console.log('index-page-hide', obj);
-      },
-      onUnload(obj) {
-          console.log('index-page-unload', obj);
-      },
-      onAppLaunched(obj) {
-          console.log('index-page-applaunched', obj);
-      },
-      methods: {
-          handleClick() {
-              console.log(document, window);
-            //   wx.showModal({
-            //       title: 'title'
-            //   })
-            // wx.showToast()
-            // wx.showLoading({
-                // mask: true
-            // })
-            // wx.showActionSheet()
+wepy.page({
+  mixins: [baseMixin],
+  data: {
+    result: {},
+    launched: false
+  },
+  onLoad(obj) {
+    console.log('index-page-load', obj);
+    console.log('page', this);
+    //   console.log('@@@', this.$app.$options.globalData.launched);
+    eventHub.$on('appLaunched', () => {
+      console.log('page-appLaunched');
+      //   console.log('@@@', this.$app.$options.globalData.launched);
+      this.launched = this.$app.$options.globalData.launched;
+    });
+  },
+  onShow(obj) {
+    console.log('index-page-show', obj);
+  },
+  onReady(obj) {
+    console.log('index-page-ready', obj);
+  },
+  onHide(obj) {
+    console.log('index-page-hide', obj);
+  },
+  onUnload(obj) {
+    console.log('index-page-unload', obj);
+  },
+  onAppLaunched(obj) {
+    console.log('index-page-applaunched', obj);
+  },
+  methods: {
+    async handleClick() {
+			// let result = await wx.get('http://localhost:4009/api/be/rc/category/query_limits2')
+			// console.log('result', result);
+      //   let result = wx.getSystemInfoSync();
+      //   console.log(result);
+      //   this.result = result;
+      //   console.log(document, window);
+      //   wx.showModal({
+      //       title: 'title'
+      //   })
+      // wx.showToast()
+      // wx.showLoading({
+      // mask: true
+      // })
+      // wx.showActionSheet()
+    },
+    login() {
+      wx.login({
+        success(res) {
+          console.log('res', res);
+          if (res.code) {
+            //发起网络请求
+            // resolve(res)
+          } else {
+            // reject('登录失败！' + res.errMsg)
           }
-      }
-  })
+        }
+      });
+    },
+    getUserInfo() {
+      wx.getUserInfo({
+        success(res) {
+          console.log('success-res', res);
+        },
+        fail(res) {
+          console.log('fail-res', res);
+        }
+      });
+    },
+    getSetting() {
+      wx.getSetting({
+        success(res) {
+          console.log('success-res', res);
+        },
+        fail(res) {
+          console.log('fail-res', res);
+        }
+      });
+    },
+    openSetting() {
+      wx.openSetting({
+        success(res) {
+          console.log('success-res', res);
+        },
+        fail(res) {
+          console.log('fail-res', res);
+        }
+      });
+    },
+    authorize() {
+      wx.authorize({
+        scope: 'scope.userLocation',
+        success(res) {
+          console.log('success-res', res);
+        },
+        fail(res) {
+          console.log('fail-res', res);
+        }
+      });
+    }
+  }
+});
 </script>
 
 <style>
-div{
-    font-size: 20px;
+div {
+  font-size: 20px;
 }
 </style>
 
