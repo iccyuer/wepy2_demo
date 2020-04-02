@@ -2,11 +2,13 @@
     <div>
         <h2>index</h2>
         <!-- <image src="../../static/images/ico_home.png" /> -->
-        <template
+        <image src="../../images/ico_my_pressed.png" />
+        <pic src="../images/ico_my_pressed.png{{}}"></pic>
+        <!-- <template
           v-for="(img, index) in images"
         >
           <image :key="index" :src="img" />
-        </template>
+        </template> -->
         <div>launched: {{launched}}</div>
         {{result.environment}}
         <button @click="handleClick">click me</button>
@@ -18,6 +20,14 @@
         <button open-type="getUserInfo">authorize(userInfo)</button>
     </div>
 </template>
+<config>
+{
+    navigationBarTitleText: '好集楽',
+    usingComponents: {
+		"pic": "~@/components/pic",
+    }
+}
+</config>
 <script>
 import wepy from '@wepy/core';
 import eventHub from '../../common/eventHub';
