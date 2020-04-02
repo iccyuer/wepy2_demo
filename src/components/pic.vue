@@ -1,7 +1,8 @@
 <template>
     <div>
-        <image :src="src" />   
-        <!-- <image src="./images/ico_my_pressed.png" />    -->
+        <div>{{src}}</div>
+        <image :src="src" />
+        <!-- <image src="./images/meishi2.jpg" /> -->
     </div>    
 </template>
 

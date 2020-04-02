@@ -3,7 +3,7 @@
         <h2>index</h2>
         <!-- <image src="../../static/images/ico_home.png" /> -->
         <image src="../../images/ico_my_pressed.png" />
-        <pic src="../images/ico_my_pressed.png{{}}"></pic>
+        <pic src="./images/meishi2.jpg{{}}"></pic>
         <!-- <template
           v-for="(img, index) in images"
         >
