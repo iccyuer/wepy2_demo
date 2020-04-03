@@ -2,7 +2,9 @@
     <div>
         <h2>index</h2>
         <!-- <image src="../../static/images/ico_home.png" /> -->
-        <image src="../../images/ico_my_pressed.png" />
+        <!-- <image src="../../components/images/meishi2.jpg" /> -->
+        <image src="../../components/images/icon_category1.png" />
+        <!-- <pic src="./images/meishi2.jpg{{}}"></pic> -->
         <pic src="./images/meishi2.jpg{{}}"></pic>
         <!-- <template
           v-for="(img, index) in images"
