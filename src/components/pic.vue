@@ -1,7 +1,8 @@
 <template>
     <div>
         <div>{{src}}</div>
-        <image :src="src" />
+        <div>--{{form.a}}--,-{{form2}}</div>
+        <!-- <image :src="src" /> -->
         <!-- <image src="./images/meishi2.jpg" /> -->
     </div>    
 </template>
@@ -12,6 +13,17 @@ import wepy from '@wepy/core';
 wepy.component({
     props: {
         src: {
+            type: String
+        },
+        form: {
+            type: Object,
+            default() {
+                return {
+                    a: 2
+                }
+            }
+        },
+        form2: {
             type: String
         }
     }

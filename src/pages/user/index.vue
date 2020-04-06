@@ -3,7 +3,8 @@
         <h2>index</h2>
         <!-- <image src="../../static/images/ico_home.png" /> -->
         <image src="../../images/ico_my_pressed.png" />
-        <pic src="./images/meishi2.jpg{{}}"></pic>
+        <div>{{form2.a}}</div>
+        <pic src="./images/meishi2.jpg{{}}" :form="form2" form2="12!"></pic>
         <!-- <template
           v-for="(img, index) in images"
         >
@@ -38,7 +39,12 @@ wepy.page({
   data: {
     result: {},
     images: ['http://localhost:3000/public/100.png'],
-    launched: false
+    launched: false,
+    form2: {
+      a: 'c',
+      bb: 1234
+    },
+    form3:'hello'
   },
   onLoad(obj) {
     console.log('index-page-load', obj);
