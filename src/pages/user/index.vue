@@ -1,8 +1,9 @@
 <template>
     <div>
         <h2>index</h2>
+        <div>??{{hehe}}??</div>
         <!-- <image src="../../static/images/ico_home.png" /> -->
-        <image src="../../images/ico_my_pressed.png" />
+        <!-- <image src="../../images/ico_my_pressed.png" /> -->
         <div>{{form2.a}}</div>
         <pic src="./images/meishi2.jpg{{}}" :form="form2" form2="12!"></pic>
         <!-- <template
@@ -33,18 +34,31 @@
 import wepy from '@wepy/core';
 import eventHub from '../../common/eventHub';
 import baseMixin from '../../mixins/base.js';
+import { mapState, mapActions } from '@wepy/x';
 
 wepy.page({
   mixins: [baseMixin],
   data: {
     result: {},
     images: ['http://localhost:3000/public/100.png'],
-    launched: false,
+    // launched: false,
     form2: {
       a: 'c',
       bb: 1234
     },
-    form3:'hello'
+    form3:'hello',
+    hehe: false
+  },
+  computed: {
+    ...mapState([ 'launched' ]),
+    hehe() {
+      return this.$app.$options.globalData.launched
+    }
+  },
+  watch: {
+    hehe(val) {
+      console.log('hehe', val);
+    }
   },
   onLoad(obj) {
     console.log('index-page-load', obj);
@@ -53,7 +67,7 @@ wepy.page({
     eventHub.$on('appLaunched', () => {
       console.log('page-appLaunched');
       //   console.log('@@@', this.$app.$options.globalData.launched);
-      this.launched = this.$app.$options.globalData.launched;
+      // this.launched = this.$app.$options.globalData.launched;
     });
   },
   onShow(obj) {
@@ -73,7 +87,10 @@ wepy.page({
   },
   methods: {
     async handleClick() {
-      this.images.push('http://localhost:3000/public/1001.png');
+      store.dispatch('launched', true);
+      // this.$app.$options.globalData.launched = !this.$app.$options.globalData.launched;
+      // console.log(this.$app.$options.globalData.launched);
+      // this.images.push('http://localhost:3000/public/1001.png');
 			// let result = await wx.get('http://localhost:4009/api/be/rc/category/query_limits2')
 			// console.log('result', result);
       //   let result = wx.getSystemInfoSync();
