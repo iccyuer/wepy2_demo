@@ -1,6 +1,7 @@
 <template>
     <div>
         <h2>index</h2>
+        <div>??{{hehe}}??.{{$app.$options.store._vm.$$state.launched}}.</div>
         <!-- <image src="../../static/images/ico_home.png" /> -->
         <!-- <image src="../../components/images/meishi2.jpg" /> -->
         <image src="../../components/images/icon_category1.png" />
@@ -34,23 +35,52 @@
 import wepy from '@wepy/core';
 import eventHub from '../../common/eventHub';
 import baseMixin from '../../mixins/base.js';
+import { mapState, mapActions } from '@wepy/x';
+import store from '../../store';
 
 wepy.page({
+  store,
   mixins: [baseMixin],
   data: {
     result: {},
     images: ['http://localhost:3000/public/100.png'],
-    launched: false
+    // launched: false,
+    form2: {
+      a: 'c',
+      bb: 1234
+    },
+    form3:'hello',
+    hehe: false
+  },
+  computed: {
+    ...mapState([ 'launched' ]),
+    // hehe() {
+    //   return this.$app.$options.store._vm.$$state.launched
+    // }
+  },
+  watch: {
+    hehe(val) {
+      console.log('hehe', val);
+    }
   },
   onLoad(obj) {
     console.log('index-page-load', obj);
     console.log('page', this);
-    //   console.log('@@@', this.$app.$options.globalData.launched);
+      // console.log('@@@', this.$app.$options.store._vm.$$state.launched);
     eventHub.$on('appLaunched', () => {
       console.log('page-appLaunched');
       //   console.log('@@@', this.$app.$options.globalData.launched);
-      this.launched = this.$app.$options.globalData.launched;
+      // this.launched = this.$app.$options.globalData.launched;
     });
+    // let i = 0;
+    // setInterval(() => {
+    //   if (i%2 == 0) {
+    //     this.$app.$options.store.dispatch('set_launched', true);
+    //   } else {
+    //     this.$app.$options.store.dispatch('set_launched', false);
+    //   }
+    //   i++;
+    // }, 1000);
   },
   onShow(obj) {
     console.log('index-page-show', obj);
@@ -69,7 +99,10 @@ wepy.page({
   },
   methods: {
     async handleClick() {
-      this.images.push('http://localhost:3000/public/1001.png');
+      store.dispatch('launched', true);
+      // this.$app.$options.globalData.launched = !this.$app.$options.globalData.launched;
+      // console.log(this.$app.$options.globalData.launched);
+      // this.images.push('http://localhost:3000/public/1001.png');
 			// let result = await wx.get('http://localhost:4009/api/be/rc/category/query_limits2')
 			// console.log('result', result);
       //   let result = wx.getSystemInfoSync();
