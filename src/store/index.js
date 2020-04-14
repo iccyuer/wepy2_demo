@@ -8,9 +8,6 @@ export default new Vuex.Store({
     counter: 0,
     launched: false
   },
-  // getters: {
-  //   launched: state => state.launched
-  // },
   mutations: {
     increment (state) {
       state.counter++;

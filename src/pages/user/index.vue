@@ -35,8 +35,10 @@ import wepy from '@wepy/core';
 import eventHub from '../../common/eventHub';
 import baseMixin from '../../mixins/base.js';
 import { mapState, mapActions } from '@wepy/x';
+import store from '../../store';
 
 wepy.page({
+  store,
   mixins: [baseMixin],
   data: {
     result: {},
