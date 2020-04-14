@@ -1,11 +1,12 @@
 <template>
     <div>
         <h2>index</h2>
-        <div>??{{hehe}}??</div>
+        <div>??{{hehe}}??.{{$app.$options.store._vm.$$state.launched}}.</div>
         <!-- <image src="../../static/images/ico_home.png" /> -->
-        <!-- <image src="../../images/ico_my_pressed.png" /> -->
-        <div>{{form2.a}}</div>
-        <pic src="./images/meishi2.jpg{{}}" :form="form2" form2="12!"></pic>
+        <!-- <image src="../../components/images/meishi2.jpg" /> -->
+        <image src="../../components/images/icon_category1.png" />
+        <!-- <pic src="./images/meishi2.jpg{{}}"></pic> -->
+        <pic src="./images/meishi2.jpg{{}}"></pic>
         <!-- <template
           v-for="(img, index) in images"
         >
@@ -53,9 +54,9 @@ wepy.page({
   },
   computed: {
     ...mapState([ 'launched' ]),
-    hehe() {
-      return this.$app.$options.globalData.launched
-    }
+    // hehe() {
+    //   return this.$app.$options.store._vm.$$state.launched
+    // }
   },
   watch: {
     hehe(val) {
@@ -65,12 +66,21 @@ wepy.page({
   onLoad(obj) {
     console.log('index-page-load', obj);
     console.log('page', this);
-    //   console.log('@@@', this.$app.$options.globalData.launched);
+      // console.log('@@@', this.$app.$options.store._vm.$$state.launched);
     eventHub.$on('appLaunched', () => {
       console.log('page-appLaunched');
       //   console.log('@@@', this.$app.$options.globalData.launched);
       // this.launched = this.$app.$options.globalData.launched;
     });
+    // let i = 0;
+    // setInterval(() => {
+    //   if (i%2 == 0) {
+    //     this.$app.$options.store.dispatch('set_launched', true);
+    //   } else {
+    //     this.$app.$options.store.dispatch('set_launched', false);
+    //   }
+    //   i++;
+    // }, 1000);
   },
   onShow(obj) {
     console.log('index-page-show', obj);

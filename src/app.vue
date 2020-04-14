@@ -12,14 +12,14 @@
 <script>
 import wepy from '@wepy/core';
 import eventHub from './common/eventHub';
-import vuex from '@wepy/x';
 import store from './store';
 
-
+// wepy.$store = store
+// wepy.$qwer = 123
 
 
 wepy.app({
-  store,
+  store: store,
   hooks: {
     // App 级别 hook，对整个 App 生效
     // 同时存在 Page hook 和 App hook 时，优先执行 Page hook，返回值再交由 App hook 处
@@ -36,6 +36,7 @@ wepy.app({
 
 
   async onLaunch(obj) {
+    // this.$set(this, '$store', store)
     console.log('app-launch-start', obj);
     // await this.sleep(3);
     eventHub.$on('app-launch', (...args) => {
@@ -44,7 +45,7 @@ wepy.app({
     });
     console.log('app-launch-end');
     this.$options.globalData.launched = true;
-    this.$options.store.dispatch('set_launched', true);
+    // this.$options.store.dispatch('set_launched', true);
     console.log('this', this);
     console.log('store', store);
     eventHub.$emit('appLaunched')
@@ -62,7 +63,7 @@ wepy.app({
   },
 
   onError(obj) {
-    console.log('app-error', obj);
+    // console.log('app-error', obj);
   },
 
   methods: {

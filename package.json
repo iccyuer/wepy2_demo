@@ -21,7 +21,7 @@
     "miniprogram-slide-view": "0.0.3"
   },
   "devDependencies": {
-    "@wepy/cli": "^2.0.0-alpha.18",
+    "@wepy/cli": "^2.0.0-alpha.20",
     "@babel/core": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
     "@wepy/babel-plugin-import-regenerator": "0.0.2",
@@ -36,6 +36,6 @@
     "wepy-eslint": "^1.5.3",
     "less": "^3.8.1",
     "@wepy/compiler-babel": "^2.0.1",
-    "@wepy/compiler-less": "^2.0.3"
+    "@wepy/compiler-less": "^2.0.1"
   }
 }
