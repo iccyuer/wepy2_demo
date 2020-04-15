@@ -1,6 +1,9 @@
 <template>
     <div>
-        <h2>index</h2>
+        <h2>index--'{{env}}'--'{{name}}'</h2>
+        <form action="">
+          <input type="text" v-model="name" >
+        </form>
         <div>??{{hehe}}??.{{$app.$options.store._vm.$$state.launched}}.</div>
         <!-- <image src="../../static/images/ico_home.png" /> -->
         <!-- <image src="../../components/images/meishi2.jpg" /> -->
@@ -21,6 +24,8 @@
         <button @click="openSetting">openSetting</button>
         <button @click="authorize">authorize(userLocation)</button>
         <button open-type="getUserInfo">authorize(userInfo)</button>
+        <hr />
+        <div v-for="(item, index) in list" :key="index" @tap="handleTap(item)">{{ item.name }}</div>
     </div>
 </template>
 <config>
@@ -42,6 +47,7 @@ wepy.page({
   store,
   mixins: [baseMixin],
   data: {
+    name: '',
     result: {},
     images: ['http://localhost:3000/public/100.png'],
     // launched: false,
@@ -50,7 +56,13 @@ wepy.page({
       bb: 1234
     },
     form3:'hello',
-    hehe: false
+    hehe: false,
+    list: [
+      { name: 11111  },
+      { name: 22222  },
+      { name: 33333  },
+    ],
+    env: ''
   },
   computed: {
     ...mapState([ 'launched' ]),
@@ -64,6 +76,7 @@ wepy.page({
     }
   },
   onLoad(obj) {
+    this.env = __wxConfig.envVersion;
     console.log('index-page-load', obj);
     console.log('page', this);
       // console.log('@@@', this.$app.$options.store._vm.$$state.launched);
@@ -99,7 +112,7 @@ wepy.page({
   },
   methods: {
     async handleClick() {
-      store.dispatch('launched', true);
+      // store.dispatch('launched', true);
       // this.$app.$options.globalData.launched = !this.$app.$options.globalData.launched;
       // console.log(this.$app.$options.globalData.launched);
       // this.images.push('http://localhost:3000/public/1001.png');
@@ -117,6 +130,12 @@ wepy.page({
       // mask: true
       // })
       // wx.showActionSheet()
+      console.log('name', this.name);
+    },
+    bindInput(e) {
+      let value = e.detail.value;
+      console.lgo('value', value);
+      this.name = value;
     },
     login() {
       wx.login({
@@ -171,6 +190,14 @@ wepy.page({
           console.log('fail-res', res);
         }
       });
+    },
+    handleTap(item) {
+      // item = Math.random()
+      // item.name = 'new'
+      // this.$set(item, 'name', 'new')
+      // item.a.name=Math.random()
+      this.list[0].name=12345
+      console.log(item, this.list)
     }
   }
 });

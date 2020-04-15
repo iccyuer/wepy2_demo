@@ -37,6 +37,11 @@ wepy.app({
 
   async onLaunch(obj) {
     // this.$set(this, '$store', store)
+    let account = wx.getAccountInfoSync().miniProgram.envVersion;
+    console.log('account', account);
+    console.log('config', __wxConfig);
+    console.log('system', wx.getSystemInfoSync());
+    console.log('wx', wx.env);
     console.log('app-launch-start', obj);
     // await this.sleep(3);
     eventHub.$on('app-launch', (...args) => {
