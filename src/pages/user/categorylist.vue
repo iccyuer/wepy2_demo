@@ -1,6 +1,10 @@
 <template>
     <div>
         <h2>categorylist</h2>
+        <view v-for="(pic, index) in picList" :key="index">
+            <image :src="pic" />
+        </view>  
+        
         <!-- http://localhost:3000/public/temp.xlsx -->
         <button @click="chooseImage">chooseImage</button>
         <button @click="downloadFile">downloadFile</button>
@@ -12,14 +16,26 @@
 import wepy from '@wepy/core';
 
 wepy.page({
+    data: {
+        picList: []
+    },
     methods: {
         chooseImage() {
+            let that = this;
             wx.chooseImage({
+                count: NaN,
+                sizeType: ['compressed'],
+                sourceType: ['album', 'camera'],
                 success(res) {
                     console.log('chooseImage-success', res);
+                    that.picList = res.tempFilePaths;
                 },
                 fail(err) {
                     console.log('chooseImage-fail', err);
+                    wx.showToast({
+                        title: err.errMsg,
+                        icon: 'none'
+                    });
                 }
             })
         },
