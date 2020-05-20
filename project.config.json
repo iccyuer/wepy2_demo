@@ -58,8 +58,13 @@
 				},
 				{
 					"id": -1,
+<<<<<<< HEAD
 					"name": "pages/user/cart",
 					"pathName": "pages/user/cart",
+=======
+					"name": "pages/user/categorylist",
+					"pathName": "pages/user/categorylist",
+>>>>>>> cfaebc646984a82ecf1c497937942940bdf60079
 					"scene": null
 				}
 			]
