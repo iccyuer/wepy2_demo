@@ -20,6 +20,10 @@ wepy.page({
                 },
                 fail(err) {
                     console.log('chooseImage-fail', err);
+                            wx.showToast({
+                            title: err.errMsg,
+                            icon: 'none'
+                            });
                 }
             })
         },

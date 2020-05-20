@@ -1,7 +1,7 @@
 {
 	"description": "A WePY project",
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": false,
 		"postcss": false,
 		"minified": false,
@@ -25,6 +25,7 @@
 	"miniprogramRoot": "weapp/",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
+	"libVersion": "2.8.2",
 	"condition": {
 		"search": {
 			"current": -1,
@@ -52,6 +53,13 @@
 					"id": -1,
 					"name": "pages/user/profile",
 					"pathName": "pages/user/profile",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/user/cart",
+					"pathName": "pages/user/cart",
 					"scene": null
 				}
 			]
